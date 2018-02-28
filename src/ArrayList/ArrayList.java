@@ -1,22 +1,22 @@
 package ArrayList;
 
-public class ArrayList<T> {
+class ArrayList<T> {
   private final static int DEFAULT_SIZE = 64;
 
   private Object[] list;
   private int length;
 
-  public ArrayList() {
-    this.list = new Object[DEFAULT_SIZE];
-    this.length = 0;
+  ArrayList() {
+    list = new Object[DEFAULT_SIZE];
+    length = 0;
   }
 
-  public ArrayList(final int size) {
+  ArrayList(final int size) {
     this.list = new Object[size];
     this.length = 0;
   }
 
-  public void add(final T value) {
+  void add(final T value) {
     assert length <= list.length;
     if (length == list.length) {
       resize();
@@ -24,25 +24,25 @@ public class ArrayList<T> {
     list[length++] = value;
   }
 
-  public T get(final int index) {
+  T get(final int index) {
     if (index >= length || index < 0) {
       throw new ArrayIndexOutOfBoundsException();
     }
     return (T) list[index];
   }
 
-  public void set(final int index, T value) {
+  void set(final int index, final T value) {
     if (index >= length || index < 0) {
       throw new ArrayIndexOutOfBoundsException();
     }
     list[index] = value;
   }
 
-  public int length() {
+  int length() {
     return length;
   }
 
-  public void shrink() {
+  void shrink() {
     Object[] res = new Object[length];
     System.arraycopy(list, 0, res, 0, length);
     list = res;
