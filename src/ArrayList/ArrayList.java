@@ -1,6 +1,7 @@
 package ArrayList;
 
 class ArrayList<T> {
+
   private final static int DEFAULT_SIZE = 64;
 
   private Object[] list;
