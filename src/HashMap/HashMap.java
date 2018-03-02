@@ -1,7 +1,6 @@
 package HashMap;
 
-import HashMap.Entry;
-import java.util.NoSuchElementException;
+import java.util.Random;
 import javax.naming.SizeLimitExceededException;
 
 public class HashMap<K, V> {
@@ -9,22 +8,29 @@ public class HashMap<K, V> {
   private static final int DEFAULT_CAPACITY = 1 << 10;  // 1024
   private Entry[] entries;
   private int capacity;
+  private Random random;
 
   public HashMap() {
     entries = new Entry[DEFAULT_CAPACITY];
     capacity = DEFAULT_CAPACITY;
+    random = new Random();
   }
 
   public HashMap(int initialCapacity) {
     entries = new Entry[initialCapacity];
     capacity = initialCapacity;
+    random = new Random();
   }
 
   public void put(final K key, final V value) throws SizeLimitExceededException {
+    random.setSeed(key.hashCode());
     for (int i = 0; i < tolerant(capacity); ++i) {
-      Entry entry = entries[(getIndex(key.hashCode()) + step(i)) % capacity];
-      if (entry.key == null || entry.key.equals(key)) {
-        entry.key = key;
+      int index = random.nextInt(capacity);
+      Entry entry = entries[index];
+      if (entry == null) {
+        entries[index] = new Entry(key, value);
+        return;
+      } else if (entry.key.equals(key)) {
         entry.value = value;
         return;
       }
@@ -32,37 +38,42 @@ public class HashMap<K, V> {
     throw new SizeLimitExceededException();
   }
 
-  public V get(final K key) throws NoSuchElementException {
+  public V remove(final K key) {
+    random.setSeed(key.hashCode());
     for (int i = 0; i < tolerant(capacity); ++i) {
-      Entry entry = entries[(getIndex(key.hashCode()) + step(i)) % capacity];
-      if (entry.key.equals(key)) {
-        return (V) entry.value;
-      } else if (entry.key == null) {
+      int index = random.nextInt(capacity);
+      Entry entry = entries[index];
+      if (entry == null) {
         return null;
+      } else if (entry.key.equals(key)) {
+        entries[index] = null;
+        return (V) entry.value;
       }
     }
-    throw new NoSuchElementException();
+    return null;
+  }
+
+  public V get(final K key) {
+    random.setSeed(key.hashCode());
+    for (int i = 0; i < tolerant(capacity); ++i) {
+      int index = random.nextInt(capacity);
+      Entry entry = entries[index];
+      if (entry == null) {
+        return null;
+      } else if (entry.key.equals(key)) {
+        return (V) entry.value;
+      }
+    }
+    return null;
   }
 
   public boolean containKey(final K key) {
-    return entries[getIndex(key.hashCode())].key != null;
-  }
-
-  private int getIndex(int hashCode) {
-    return hashCode & (capacity - 1);
-  }
-
-  private static int step(int i) {
-    return i * i;
+    random.setSeed(key.hashCode());
+    return entries[random.nextInt(capacity)] != null;
   }
 
   private static int tolerant(int capacity) {
-    // TODO
     return capacity;
-  }
-
-  public static void main(String[] args) {
-    HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
   }
 
 }
