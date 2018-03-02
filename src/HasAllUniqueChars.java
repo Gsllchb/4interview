@@ -1,7 +1,7 @@
-// Implement an algorithm to determine if a string has all unique characters What if you can not use
+// Implement an algorithm to determine if a string has all unique characters. What if you can not use
 // additional data structures?
 
-public class StrHasAllUniqueChars {
+public class HasAllUniqueChars {
 
   final static int CHAR_SET = 256;
 
