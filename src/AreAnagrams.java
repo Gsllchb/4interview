@@ -36,5 +36,6 @@ public class AreAnagrams {
     assert areAnagrams("12", "12");
     assert areAnagrams("12345", "54321");
     assert !areAnagrams("11", "1");
+    assert !areAnagrams("123", "abc");
   }
 }
