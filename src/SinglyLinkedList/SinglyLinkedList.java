@@ -73,6 +73,5 @@ public class SinglyLinkedList<T> {
     assert list.get(0) == 9;
     assert list.get(1) == 5;
     assert list.get(2) == 3;
-
   }
 }
