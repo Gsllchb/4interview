@@ -1,6 +1,6 @@
 // Write a method to decide if two strings are anagrams or not.
 
-import HashMap.HashMap;
+import util.HashMap;
 
 public class AreAnagrams {
 
