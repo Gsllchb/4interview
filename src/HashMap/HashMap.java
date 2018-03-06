@@ -10,14 +10,21 @@ public class HashMap<K, V> {
 
   public HashMap() {
     buckets = new LinkedList[CAPACITY];
-    for (LinkedList list: buckets) {
-      list = new LinkedList();
+    for (int i = 0; i < CAPACITY; ++i) {
+      buckets[i] = new LinkedList();
     }
     size = 0;
   }
 
   public void put(final K key, final V value) {
-    buckets[getIndex(key.hashCode())].addFirst(new Entry(key, value));
+    LinkedList<Entry> list = buckets[getIndex(key.hashCode())];
+    for (Entry entry: list) {
+      if (entry.key.equals(key)) {
+        entry.value = value;
+        return;
+      }
+    }
+    list.addFirst(new Entry(key, value));
     ++size;
   }
 
@@ -37,6 +44,7 @@ public class HashMap<K, V> {
       Entry entry = iterator.next();
       if (entry.key.equals(key)) {
         iterator.remove();
+        --size;
         return (V) entry.value;
       }
     }
@@ -53,7 +61,26 @@ public class HashMap<K, V> {
     return false;
   }
 
+  public int size(){
+    return size;
+  }
+
   private int getIndex(int hashCode) {
     return hashCode & (CAPACITY - 1);
+  }
+
+  public static void main(String[] args) {
+    HashMap<String, String> map = new HashMap<String, String>();
+    map.put("a", "A");
+    assert map.get("a").equals("A");
+    map.put("b", "B");
+    assert map.size() == 2;
+    map.put("a", "AA");
+    assert map.size() == 2;
+    assert map.get("a").equals("AA");
+    assert map.containsKey("b");
+    assert map.remove("b").equals("B");
+    assert !map.containsKey("b");
+    assert map.size() == 1;
   }
 }
