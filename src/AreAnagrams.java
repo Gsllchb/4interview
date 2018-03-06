@@ -1,6 +1,6 @@
 // Write a method to decide if two strings are anagrams or not.
 
-import java.util.HashMap;
+import HashMap.HashMap;
 
 public class AreAnagrams {
 

@@ -61,6 +61,11 @@ public class HashMap<K, V> {
     return false;
   }
 
+  public V getOrDefault(final K key, V defaultValue) {
+    V res = get(key);
+    return res == null ? defaultValue : res;
+  }
+
   public int size(){
     return size;
   }
@@ -82,5 +87,6 @@ public class HashMap<K, V> {
     assert map.remove("b").equals("B");
     assert !map.containsKey("b");
     assert map.size() == 1;
+    assert map.getOrDefault("b", "BB").equals("BB");
   }
 }
