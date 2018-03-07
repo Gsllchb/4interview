@@ -16,6 +16,12 @@ public class ReverseCStr {
   }
 
   public static void main(String[] args) {
-    // TODO
+    String[][] tests = {{"1234#", "4321#"}, {"#", "#"}, {"1#", "1#"}};
+    for (String[] test: tests) {
+      String str = test[0];
+      char[] arr = str.toCharArray();
+      reverse(arr);
+      assert new String(arr).equals(test[1]);
+    }
   }
 }
