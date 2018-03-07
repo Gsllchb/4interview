@@ -15,4 +15,7 @@ public class ReverseCStr {
     source[index2] = temp;
   }
 
+  public static void main(String[] args) {
+    // TODO
+  }
 }

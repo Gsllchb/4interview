@@ -25,6 +25,10 @@ public class ArrayList<T> {
     list[length++] = value;
   }
 
+  public T removeLast() {
+    return (T) list[--length];
+  }
+
   public T get(int index) {
     if (index >= length || index < 0) {
       throw new ArrayIndexOutOfBoundsException();
