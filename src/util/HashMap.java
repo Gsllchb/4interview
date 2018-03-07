@@ -11,7 +11,7 @@ public class HashMap<K, V> {
   public HashMap() {
     buckets = new LinkedList[CAPACITY];
     for (int i = 0; i < CAPACITY; ++i) {
-      buckets[i] = new LinkedList();
+      buckets[i] = new LinkedList<>();
     }
     size = 0;
   }
