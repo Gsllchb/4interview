@@ -1,4 +1,6 @@
 import util.BinaryTreeNode;
+import util.Queue;
+
 public class TreeTraversals {
 
   public static void preOrder(final BinaryTreeNode<Integer> root) {
@@ -21,7 +23,7 @@ public class TreeTraversals {
     }
   }
 
-  public static void postOrder(BinaryTreeNode<Integer> root) {
+  public static void postOrder(final BinaryTreeNode<Integer> root) {
     if (root.left != null) {
       postOrder(root.left);
     }
@@ -29,6 +31,21 @@ public class TreeTraversals {
       postOrder(root.right);
     }
     System.out.println(root.data);
+  }
+
+  public static void levelOrder(final BinaryTreeNode<Integer> root) {
+    Queue<BinaryTreeNode<Integer>> queue = new Queue<>();
+    queue.push(root);
+    while (!queue.isEmpty()) {
+      BinaryTreeNode<Integer> current = queue.pop();
+      System.out.println(current.data);
+      if (current.left != null) {
+        queue.push(current.left);
+      }
+      if (current.right != null) {
+        queue.push(current.right);
+      }
+    }
   }
 
 //================================================

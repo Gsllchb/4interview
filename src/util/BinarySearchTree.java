@@ -7,7 +7,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
 
   public boolean insert(final T element) {
     if (root == null) {
-      root = new BinaryTreeNode<>(element);
+      root = new BinaryTreeNode<>(null, element);
       ++size;
       return true;
     } else {
@@ -16,13 +16,13 @@ public class BinarySearchTree<T extends Comparable<T>> {
   }
 
   private boolean insert(BinaryTreeNode<T> root, final T element) {
-    for (; ; ) {
+    for ( ; ; ) {
       int res = root.data.compareTo(element);
       if (res == 0) {
         return false;
       } else if (res < 0) {
         if (root.right == null) {
-          root.right = new BinaryTreeNode<>(element);
+          root.right = new BinaryTreeNode<>(root, element);
           ++size;
           return true;
         } else {
@@ -30,7 +30,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
         }
       } else {
         if (root.left == null) {
-          root.left = new BinaryTreeNode<>(element);
+          root.left = new BinaryTreeNode<>(root, element);
           ++size;
           return true;
         } else {
@@ -49,7 +49,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
   }
 
   private boolean contains(BinaryTreeNode<T> root, final T element) {
-    for (; ; ) {
+    for ( ; ; ) {
       int res = root.data.compareTo(element);
       if (res == 0) {
         return true;
@@ -67,6 +67,11 @@ public class BinarySearchTree<T extends Comparable<T>> {
         }
       }
     }
+  }
+
+  private boolean remove(BinaryTreeNode<T> root, final T element) {
+    // TODO
+    return false;
   }
 
   public BinaryTreeNode<T> getRoot() {
