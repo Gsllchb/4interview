@@ -1,3 +1,5 @@
+import javax.sound.midi.Soundbank;
+import util.BinarySearchTree;
 import util.BinaryTreeNode;
 import util.Queue;
 
@@ -48,11 +50,24 @@ public class TreeTraversals {
     }
   }
 
-//================================================
-// Test
-//================================================
 
+  //================== Test ==============================
   public static void main(String[] args) {
-
+    BinarySearchTree<Integer> tree = new BinarySearchTree<>();
+    tree.insert(5);
+    tree.insert(6);
+    tree.insert(7);
+    tree.insert(2);
+    tree.insert(1);
+    tree.insert(4);
+    tree.insert(3);
+    System.out.println("=============== pre-order ===============");
+    preOrder(tree.getRoot());
+    System.out.println("=============== in-order ===============");
+    inOrder(tree.getRoot());
+    System.out.println("=============== post-order ===============");
+    postOrder(tree.getRoot());
+    System.out.println("=============== level-order ===============");
+    levelOrder(tree.getRoot());
   }
 }

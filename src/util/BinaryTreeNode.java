@@ -6,7 +6,7 @@ public class BinaryTreeNode<T extends Comparable<T>> {
   public T data;
   public BinaryTreeNode<T> right = null;
 
-  public BinaryTreeNode(final T data) {
+  BinaryTreeNode(final T data) {
     this.data = data;
   }
 }
