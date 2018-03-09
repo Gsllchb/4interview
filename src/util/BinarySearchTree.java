@@ -3,93 +3,95 @@ package util;
 public class BinarySearchTree<T extends Comparable<T>> {
 
   private BinaryTreeNode<T> root = null;
-  private int size = 0;
 
-  public boolean insert(final T element) {
+
+  //================ Insert ==================
+  public void insert(final T element) {
+    root = insert(root, element);
+  }
+
+  private BinaryTreeNode<T> insert(final BinaryTreeNode<T> root, final T element) {
     if (root == null) {
-      root = new BinaryTreeNode<>(null, element);
-      ++size;
-      return true;
-    } else {
-      return insert(root, element);
+      return new BinaryTreeNode<>(element);
     }
+    int res = root.data.compareTo(element);
+    if (res < 0) {
+      root.right = insert(root.right, element);
+    } else if (res > 0) {
+      root.left = insert(root.left, element);
+    }
+    return root;
   }
 
-  private boolean insert(BinaryTreeNode<T> root, final T element) {
-    for ( ; ; ) {
-      int res = root.data.compareTo(element);
-      if (res == 0) {
-        return false;
-      } else if (res < 0) {
-        if (root.right == null) {
-          root.right = new BinaryTreeNode<>(root, element);
-          ++size;
-          return true;
-        } else {
-          root = root.right;
-        }
-      } else {
-        if (root.left == null) {
-          root.left = new BinaryTreeNode<>(root, element);
-          ++size;
-          return true;
-        } else {
-          root = root.left;
-        }
-      }
-    }
+
+  // ============== Search ===================
+  public boolean search(final T element) {
+    return search(root, element);
   }
 
-  public boolean contains(final T element) {
+  private boolean search(final BinaryTreeNode<T> root, final T element) {
     if (root == null) {
       return false;
+    }
+    int res = root.data.compareTo(element);
+    if (res == 0) {
+      return true;
+    } else if (res < 0) {
+      return search(root.right, element);
     } else {
-      return contains(root, element);
+      return search(root.left, element);
     }
   }
 
-  private boolean contains(BinaryTreeNode<T> root, final T element) {
-    for ( ; ; ) {
-      int res = root.data.compareTo(element);
-      if (res == 0) {
-        return true;
-      } else if (res < 0) {
-        if (root.right == null) {
-          return false;
-        } else {
-          root = root.right;
-        }
+
+  // =============== Delete ==================
+  public void delete(final T element) {
+    root = delete(root, element);
+  }
+
+  private BinaryTreeNode<T> delete(final BinaryTreeNode<T> root, final T element) {
+    if (root == null) {
+      return null;
+    }
+    int res = root.data.compareTo(element);
+    if (res == 0) {
+      if (root.left == null) {
+        return root.right;
+      } else if (root.right == null) {
+        return root.left;
       } else {
-        if (root.left == null) {
-          return false;
-        } else {
-          root = root.left;
-        }
+        root.data = getRightmostData(root.left);
+        root.left = delete(root.left, element);
       }
+    } else if (res < 0) {
+      root.right = delete(root.right, element);
+    } else {
+      root.left = delete(root.left, element);
     }
+    return root;
   }
 
-  private boolean remove(BinaryTreeNode<T> root, final T element) {
-    // TODO
-    return false;
+  private T getRightmostData(BinaryTreeNode<T> root) {
+    while (root != null) {
+      root = root.right;
+    }
+    return root.data;
   }
 
+  // =============== MISC ====================
   public BinaryTreeNode<T> getRoot() {
     return root;
   }
 
-  public int size() {
-    return size;
-  }
 
+  // =============== Test ====================
   public static void main(String[] args) {
     BinarySearchTree<Integer> tree = new BinarySearchTree<>();
-    assert tree.size() == 0;
-    assert tree.insert(1);
-    assert tree.size() == 1;
-    assert tree.contains(1);
-    assert tree.insert(2);
-    assert tree.contains(2);
-    assert tree.size() == 2;
+    assert !tree.search(1);
+    tree.delete(2);
+    tree.insert(0);
+    assert tree.search(0);
+    tree.delete(0);
+    assert !tree.search(0);
   }
 }
