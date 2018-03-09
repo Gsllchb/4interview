@@ -1,11 +1,10 @@
 // Given an image represented by an NxN matrix, where each pixel in the image is 4 bytes, write a
 // method to rotate the image by 90 degrees. Can you do this in place?
 
-package RotateImage;
 
-public class RotateMatrix {
+public class RotateImage {
 
-  static void rotateMatrix(int[][] matrix) {
+  public static void rotateMatrix(int[][] matrix) {
     if (matrix == null || matrix.length == 0) {
       return;
     }
