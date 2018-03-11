@@ -4,9 +4,9 @@
 // FOLLOW UP
 // Write the test cases for this method.
 
-public class RemoveDuplicates {
+class RemoveDuplicates {
 
-  public static void removeDuplicates(char[] str) {
+  static void removeDuplicates(char[] str) {
     if (str == null) {
       return;
     }
@@ -28,6 +28,8 @@ public class RemoveDuplicates {
     }
   }
 
+
+  //================ Test =================
   public static void main(String[] args) {
     String[][] tests = {
         {"1111", "1"},
@@ -37,7 +39,7 @@ public class RemoveDuplicates {
         {"1", "1"},
         {"121212", "12"}
     };
-    for (String[] test : tests){
+    for (String[] test : tests) {
       char[] res = test[0].toCharArray();
       removeDuplicates(res);
       assert equal(res, test[1]);
@@ -47,7 +49,7 @@ public class RemoveDuplicates {
     assert equal(res, null);
   }
 
-  private static boolean equal(final char[] test, String correct) {
+  static boolean equal(final char[] test, String correct) {
     if (test == null) {
       if (correct == null) {
         return true;

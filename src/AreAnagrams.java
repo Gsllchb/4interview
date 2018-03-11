@@ -2,7 +2,7 @@
 
 import util.HashMap;
 
-public class AreAnagrams {
+class AreAnagrams {
 
   static boolean areAnagrams(String str1, String str2) throws Exception {
     if (str1.length() != str2.length()) {

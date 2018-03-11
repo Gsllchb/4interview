@@ -1,11 +1,10 @@
-import javax.sound.midi.Soundbank;
 import util.BinarySearchTree;
 import util.BinaryTreeNode;
 import util.Queue;
 
-public class TreeTraversals {
+class TreeTraversals {
 
-  public static void preOrder(final BinaryTreeNode<Integer> root) {
+  static void preOrder(final BinaryTreeNode<Integer> root) {
     System.out.println(root.data);
     if (root.left != null) {
       preOrder(root.left);
@@ -15,7 +14,7 @@ public class TreeTraversals {
     }
   }
 
-  public static void inOrder(final BinaryTreeNode<Integer> root) {
+  static void inOrder(final BinaryTreeNode<Integer> root) {
     if (root.left != null) {
       inOrder(root.left);
     }
@@ -25,7 +24,7 @@ public class TreeTraversals {
     }
   }
 
-  public static void postOrder(final BinaryTreeNode<Integer> root) {
+  static void postOrder(final BinaryTreeNode<Integer> root) {
     if (root.left != null) {
       postOrder(root.left);
     }
@@ -35,7 +34,7 @@ public class TreeTraversals {
     System.out.println(root.data);
   }
 
-  public static void levelOrder(final BinaryTreeNode<Integer> root) {
+  static void levelOrder(final BinaryTreeNode<Integer> root) {
     Queue<BinaryTreeNode<Integer>> queue = new Queue<>();
     queue.push(root);
     while (!queue.isEmpty()) {

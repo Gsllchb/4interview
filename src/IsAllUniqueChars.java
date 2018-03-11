@@ -1,7 +1,7 @@
 // Implement an algorithm to determine if a string has all unique characters. What if you can not use
 // additional data structures?
 
-public class IsAllUniqueChars {
+class IsAllUniqueChars {
 
   final static int CHAR_SET = 256;
 
@@ -16,6 +16,7 @@ public class IsAllUniqueChars {
     }
     return true;
   }
+
 
   public static void main(String[] args) {
     assert isAllUniqueChars("123");

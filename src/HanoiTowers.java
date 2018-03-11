@@ -1,8 +1,8 @@
 import util.Stack;
 
-public class HanoiTowers {
+class HanoiTowers {
   private static final int NUM_OF_PLATES = 7;
-  public static void move(Stack<Integer>[] stacks, int start, int dest, int num) {
+  static void move(Stack<Integer>[] stacks, int start, int dest, int num) {
     if (num == 1) {
       int plate = stacks[start].pop();
       assert stacks[dest].isEmpty() || plate < stacks[dest].peep();
@@ -15,6 +15,8 @@ public class HanoiTowers {
     move(stacks, temp, dest, num - 1);
   }
 
+
+  // =================== Test =================
   public static void main(String[] args) {
     Stack<Integer>[] stacks = new Stack[3];
     for (int i = 0; i < stacks.length; ++i) {

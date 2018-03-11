@@ -2,9 +2,9 @@
 // method to rotate the image by 90 degrees. Can you do this in place?
 
 
-public class RotateImage {
+class RotateImage {
 
-  public static void rotateMatrix(int[][] matrix) {
+  static void rotateMatrix(int[][] matrix) {
     if (matrix == null || matrix.length == 0) {
       return;
     }
@@ -22,7 +22,7 @@ public class RotateImage {
     }
   }
 
-  public class Image {
+  class Image {
 
     private int[][] matrix;
     private boolean hasRotated;
