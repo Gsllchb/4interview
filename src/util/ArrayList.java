@@ -29,6 +29,31 @@ public class ArrayList<T> {
     return (T) list[--length];
   }
 
+  public void remove(final T value) {
+    int i;
+    for (i = 0; i < list.length; ++i) {
+      if (value.equals(list[i])) {
+        break;
+      }
+    }
+    if (i == list.length) {
+      return;
+    }
+    for (int j = i; j < list.length - 1; ++j) {
+      list[j] = list[j + 1];
+    }
+    removeLast();
+  }
+
+  public boolean contains(final T value) {
+    for (Object e: list) {
+      if (value.equals(e)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   public T get(int index) {
     if (index >= length || index < 0) {
       throw new ArrayIndexOutOfBoundsException();
@@ -71,5 +96,8 @@ public class ArrayList<T> {
     list.shrink();
     assert list.get(0) == 1;
     assert list.get(1) == 3;
+    assert list.contains(3);
+    list.remove(3);
+    assert !list.contains(3);
   }
 }
