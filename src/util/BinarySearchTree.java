@@ -61,7 +61,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
         return root.left;
       } else {
         root.data = getRightmostData(root.left);
-        root.left = delete(root.left, element);
+        root.left = delete(root.left, root.data);
       }
     } else if (res < 0) {
       root.right = delete(root.right, element);
@@ -72,7 +72,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
   }
 
   private T getRightmostData(BinaryTreeNode<T> root) {
-    while (root != null) {
+    while (root.right != null) {
       root = root.right;
     }
     return root.data;
