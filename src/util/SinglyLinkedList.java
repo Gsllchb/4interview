@@ -40,8 +40,9 @@ public class SinglyLinkedList<T> {
   }
 
   public T set(int index, final T data) {
-    T res = (T) getNode(index).data;
-    getNode(index).data = data;
+    SinglyLinkedListNode node = getNode(index);
+    T res = (T) node.data;
+    node.data = data;
     return res;
   }
 
