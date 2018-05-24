@@ -15,10 +15,8 @@ public class SinglyLinkedList<T> {
   }
 
   public void addFirst(final T data) {
-    SinglyLinkedListNode node = new SinglyLinkedListNode(data, null);
-    SinglyLinkedListNode next = head.next;
+    SinglyLinkedListNode node = new SinglyLinkedListNode(data, head.next);
     head.next = node;
-    node.next = next;
     ++length;
   }
 
