@@ -5,12 +5,12 @@ public class SortAlgorithm<T extends Comparable<T>> {
     if (hi - lo <= 1) {
       return;
     }
-    int mi = find_partition(arr, lo, hi);
+    int mi = findPartition(arr, lo, hi);
     quickSort(arr, lo, mi);
     quickSort(arr, mi + 1, hi);
   }
 
-  private int find_partition(T[] arr, int lo, int hi) {
+  private int findPartition(T[] arr, int lo, int hi) {
     T pivot = arr[lo];
     while (hi - lo > 1) {
       while (hi - lo > 1 && arr[hi - 1].compareTo(pivot) >= 0) {
