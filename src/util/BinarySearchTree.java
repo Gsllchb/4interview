@@ -1,18 +1,18 @@
 package util;
 
-public class BinarySearchTree<T extends Comparable<T>> {
+public class BinarySearchTree {
 
-  private BinaryTreeNode<T> root = null;
+  private BinaryTreeNode root = null;
 
 
   //================ Insert ==================
-  public void insert(final T element) {
+  public void insert(final Comparable element) {
     root = insert(root, element);
   }
 
-  private BinaryTreeNode<T> insert(final BinaryTreeNode<T> root, final T element) {
+  private BinaryTreeNode insert(final BinaryTreeNode root, final Comparable element) {
     if (root == null) {
-      return new BinaryTreeNode<>(element);
+      return new BinaryTreeNode(element);
     }
     int res = root.data.compareTo(element);
     if (res < 0) {
@@ -25,11 +25,11 @@ public class BinarySearchTree<T extends Comparable<T>> {
 
 
   // ============== Search ===================
-  public boolean search(final T element) {
+  public boolean search(final Comparable element) {
     return search(root, element);
   }
 
-  private boolean search(final BinaryTreeNode<T> root, final T element) {
+  private boolean search(final BinaryTreeNode root, final Comparable element) {
     if (root == null) {
       return false;
     }
@@ -45,11 +45,11 @@ public class BinarySearchTree<T extends Comparable<T>> {
 
 
   // =============== Delete ==================
-  public void delete(final T element) {
+  public void delete(final Comparable element) {
     root = delete(root, element);
   }
 
-  private BinaryTreeNode<T> delete(final BinaryTreeNode<T> root, final T element) {
+  private BinaryTreeNode delete(final BinaryTreeNode root, final Comparable element) {
     if (root == null) {
       return null;
     }
@@ -71,7 +71,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
     return root;
   }
 
-  private T getRightmostData(BinaryTreeNode<T> root) {
+  private Comparable getRightmostData(BinaryTreeNode root) {
     while (root.right != null) {
       root = root.right;
     }
@@ -79,14 +79,14 @@ public class BinarySearchTree<T extends Comparable<T>> {
   }
 
   // =============== MISC ====================
-  public BinaryTreeNode<T> getRoot() {
+  public BinaryTreeNode getRoot() {
     return root;
   }
 
 
   // =============== Test ====================
   public static void main(String[] args) {
-    BinarySearchTree<Integer> tree = new BinarySearchTree<>();
+    BinarySearchTree tree = new BinarySearchTree();
     assert !tree.search(1);
     tree.delete(2);
     tree.insert(0);

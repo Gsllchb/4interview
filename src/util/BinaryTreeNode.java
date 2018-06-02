@@ -1,12 +1,12 @@
 package util;
 
-public class BinaryTreeNode<T extends Comparable<T>> {
+public class BinaryTreeNode {
 
-  public BinaryTreeNode<T> left = null;
-  public T data;
-  public BinaryTreeNode<T> right = null;
+  public BinaryTreeNode left = null;
+  public Comparable data;
+  public BinaryTreeNode right = null;
 
-  BinaryTreeNode(final T data) {
+  BinaryTreeNode(final Comparable data) {
     this.data = data;
   }
 }

@@ -4,7 +4,7 @@ import util.Queue;
 
 class TreeTraversals {
 
-  static void preOrder(final BinaryTreeNode<Integer> root) {
+  static void preOrder(final BinaryTreeNode root) {
     System.out.println(root.data);
     if (root.left != null) {
       preOrder(root.left);
@@ -14,7 +14,7 @@ class TreeTraversals {
     }
   }
 
-  static void inOrder(final BinaryTreeNode<Integer> root) {
+  static void inOrder(final BinaryTreeNode root) {
     if (root.left != null) {
       inOrder(root.left);
     }
@@ -24,7 +24,7 @@ class TreeTraversals {
     }
   }
 
-  static void postOrder(final BinaryTreeNode<Integer> root) {
+  static void postOrder(final BinaryTreeNode root) {
     if (root.left != null) {
       postOrder(root.left);
     }
@@ -34,11 +34,11 @@ class TreeTraversals {
     System.out.println(root.data);
   }
 
-  static void levelOrder(final BinaryTreeNode<Integer> root) {
-    Queue<BinaryTreeNode<Integer>> queue = new Queue<>();
+  static void levelOrder(final BinaryTreeNode root) {
+    Queue<BinaryTreeNode> queue = new Queue<>();
     queue.push(root);
     while (!queue.isEmpty()) {
-      BinaryTreeNode<Integer> current = queue.pop();
+      BinaryTreeNode current = queue.pop();
       System.out.println(current.data);
       if (current.left != null) {
         queue.push(current.left);
@@ -52,7 +52,7 @@ class TreeTraversals {
 
   //================== Test ==============================
   public static void main(String[] args) {
-    BinarySearchTree<Integer> tree = new BinarySearchTree<>();
+    BinarySearchTree tree = new BinarySearchTree();
     tree.insert(5);
     tree.insert(6);
     tree.insert(7);
