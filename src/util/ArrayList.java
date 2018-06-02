@@ -26,7 +26,9 @@ public class ArrayList<T> {
   }
 
   public T removeLast() {
-    return (T) list[--length];
+    T res = (T) list[--length];
+    list[length] = null;  // 确保被移除的元素能够被垃圾收集器回收
+    return res;
   }
 
   public void remove(final T value) {
