@@ -1,4 +1,4 @@
-public class SortAlgorithm<T extends Comparable<T>> {
+public class QuickSort<T extends Comparable<T>> {
 
   // quick sort
   public void quickSort(T[] arr, int lo, int hi) {
@@ -30,7 +30,7 @@ public class SortAlgorithm<T extends Comparable<T>> {
 
   // test
   public static void main(String[] args) {
-    SortAlgorithm<Integer> sa = new SortAlgorithm<>();
+    QuickSort<Integer> sa = new QuickSort<>();
     Integer[] arr = {-1, 2, 9, 0, -2, 9, 1, -7, 22, 0};
     sa.quickSort(arr, 0, arr.length);
     sa.printArray(arr);
