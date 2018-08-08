@@ -1,7 +1,7 @@
-public class QuickSort<T extends Comparable<T>> {
+public class QuickSort {
 
   // quick sort
-  public void quickSort(T[] arr, int lo, int hi) {
+  public static <T extends Comparable<T>> void quickSort(T[] arr, int lo, int hi) {
     if (hi - lo <= 1) {
       return;
     }
@@ -10,7 +10,7 @@ public class QuickSort<T extends Comparable<T>> {
     quickSort(arr, mi + 1, hi);
   }
 
-  private int findPartition(T[] arr, int lo, int hi) {
+  private static <T extends Comparable<T>> int findPartition(T[] arr, int lo, int hi) {
     T pivot = arr[lo];
     while (hi - lo > 1) {
       while (hi - lo > 1 && arr[hi - 1].compareTo(pivot) >= 0) {
@@ -30,14 +30,13 @@ public class QuickSort<T extends Comparable<T>> {
 
   // test
   public static void main(String[] args) {
-    QuickSort<Integer> sa = new QuickSort<>();
     Integer[] arr = {-1, 2, 9, 0, -2, 9, 1, -7, 22, 0};
-    sa.quickSort(arr, 0, arr.length);
-    sa.printArray(arr);
+    quickSort(arr, 0, arr.length);
+    printArray(arr);
   }
 
-  private void printArray(T[] arr) {
-    for (T i : arr) {
+  private static void printArray(Object[] arr) {
+    for (Object i : arr) {
       System.out.print(i + ", ");
     }
   }
