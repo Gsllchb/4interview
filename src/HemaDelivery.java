@@ -16,23 +16,14 @@ public class HemaDelivery {
             xs[i] = Integer.valueOf(strs[2 * i]);
             ys[i] = Integer.valueOf(strs[2 * i + 1]);
         }
+        
         int[] isLeft = new int[length];
         for (int i = 0; i < length - 1; ++i) {
             isLeft[i] = inLeft(xs[i], ys[i], xs[i + 1], ys[i + 1], x, y);
         }
         isLeft[length - 1] = inLeft(xs[length - 1], ys[length - 1], xs[0], ys[0], x, y);
 
-        boolean isInside = false;
-        if (hasZero(isLeft)) {
-            isInside = true;
-        }
-        if (allNegative(isLeft)) {
-            isInside = true;
-        }
-        if (allPositive(isLeft)) {
-            isInside = true;
-        }
-        if (isInside) {
+        if (hasZero(isLeft) || allNegative(isLeft) || allPositive(isLeft)) {
             System.out.println("yes,0");
             return;
         }
