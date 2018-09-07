@@ -37,7 +37,6 @@ public class HemaDelivery {
             return;
         }
 
-        System.out.print("no,");
         double minDistance = Double.MAX_VALUE;
         for (int i = 0; i < length; ++i) {
             double temp = distance(xs[i], ys[i], x, y);
@@ -60,7 +59,7 @@ public class HemaDelivery {
                 minDistance = temp;
             }
         }
-        System.out.println(Math.round(minDistance));
+        System.out.println("no," + Math.round(minDistance));
     }
 
     private static boolean canReach(int x0, int y0, int x1, int y1, int x, int y) {
